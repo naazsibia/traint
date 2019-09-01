@@ -21,6 +21,7 @@ class Dress(models.Model):
     name = models.CharField(max_length = 30)
     image = models.ImageField(upload_to=image_directory_path, storage=image_storage) # will specify where the image is
     price = models.PositiveSmallIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True) # date dress was  added 
 
     def avg_rating(self):
         all_ratings = map(lambda x: x.rating, self.review_set.all())
@@ -30,6 +31,7 @@ class Dress(models.Model):
         return self.name
 
 class Rating(models.Model):
-    CHOICES = [(1, 'Bad'), (2, 'Dislike'), (3, 'OK'), (4, 'Like'), (5, 'Love')] # having numbers helps with clustering
+    CHOICES = [(1, 'Bad'), (2, 'Dislike'), (3, 'OK'), (4, 'Like'), (5, 'Love')] # having numbers helps with clustering - would eventually 
+     # want to replace with stars 
     dress = models.ForeignKey(Dress, models.CASCADE)
     rating = models.PositiveIntegerField(choices=CHOICES)
