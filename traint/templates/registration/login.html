@@ -1,0 +1,15 @@
+<!-- Credits: https://wsvincent.com/django-user-authentication-tutorial-login-and-logout/-->
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+<h2>Login</h2>
+{% block content %}
+<div class="container">
+<form method="post">
+  {% csrf_token %} <!-- security concern - preventd CSRF attack-->
+  {{ form|crispy }} <!-- formas contents split between paragraphs because of this-->
+  <button type="submit" class="btn btn-success">Login</button>
+</form>
+</div>
+{% endblock %}
