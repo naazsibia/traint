@@ -1,6 +1,6 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.db import models
 from .models import Dress
 
@@ -28,3 +28,7 @@ def dress_list(request):
     dress_table = [dress_list[i:i+n] for i in range(0, len(dress_list), n)]
     context = {'rows': dress_table}
     return render(request, 'ratings/dress_table.html', context)
+
+def dress_detail(request, dress_id):
+    dress = get_object_or_404(Dress, pk=dress_id)
+    return render(request, 'ratings/dress_detail.html', {'dress': dress})

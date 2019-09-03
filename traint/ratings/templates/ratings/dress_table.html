@@ -8,10 +8,10 @@
 {% if rows %}
 <div class="container">
     {% for row in rows %}
-    <div class="column">
-        {% for dress in row %}
-      <div class="row">
-        <h4><a style="color: #bd0d36" href="#">
+    <div class="row">
+      {% for dress in row %}
+      <div class="col-xs-6 col-lg-4">
+        <h4><a style="color: #bd0d36" href="{% url 'ratings:dress_detail' dress.id %}">
         {{ dress.name }}  
          </a></h4>
         <img src="{{ dress.image.url }}" style="width:250px;height:300px;">
