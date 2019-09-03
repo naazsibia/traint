@@ -16,12 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
+from django.conf import settings 
 from django.views.generic.base import TemplateView 
+from django.conf.urls.static import static # for images
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
-]
+    path('ratings/', include('ratings.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # serves static media from Django is debug is true else from server
 
-# path('ratings/', include('ratings.urls')), - for later

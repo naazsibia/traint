@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+
+{% block content %}
+<div class="container">
+<h2>Dress list</h2>
+</div>
+{% if rows %}
+<div class="container">
+    {% for row in rows %}
+    <div class="column">
+        {% for dress in row %}
+      <div class="row">
+        <h4><a style="color: #bd0d36" href="#">
+        {{ dress.name }}  
+         </a></h4>
+        <img src="{{ dress.image.url }}" style="width:250px;height:300px;">
+        <h5> ${{dress.price}}</h5>
+        <h5>{{ dress.average_rating | floatformat }} average rating</h5>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+  <div class="container">
+    <p>No dresses are available.</p>
+  </div>
+{% endif %}
+{% endblock %}
+
