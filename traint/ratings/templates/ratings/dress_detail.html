@@ -9,7 +9,7 @@
         <h2 style="color: #24282e"> {{ dress.name }}</h2>   
         <img src="{{ dress.image.url }}">
         <h3>Price: ${{ dress.price }}</h3>
-        <h5>{{ dress.rating_set.count }} ratings ({{ dress.average_rating | floatformat }} average rating)</h5>
+        <h5>{{ dress.rating_set.count }} ratings ({{ dress.avg_rating | floatformat }} average rating)</h5>
     </div>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 

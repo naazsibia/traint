@@ -16,7 +16,7 @@
          </a></h4>
         <img src="{{ dress.image.url }}" style="width:250px;height:300px;">
         <h5> ${{dress.price}}</h5>
-        <h5>{{ dress.average_rating | floatformat }} average rating</h5>
+        <h5>{{ dress.avg_rating | floatformat }} average rating</h5>
       </div>
       {% endfor %}
     </div>
