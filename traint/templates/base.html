@@ -18,6 +18,9 @@
             </ul>
             <ul class="nav">
                 <li><a style="color: #fffefc; float:right;" href="{% url 'logout' %}">Logout</a></li>
+                {%if user.is_staff %}
+                <li><a style="color: #838784; float:right;" href="/admin">Admin</a></li>
+                {% endif %}
                 <li><a style="color: #838784; float:right;">Hey, {{ user.username }}!</a></li>
             </ul>
         {% else %}
