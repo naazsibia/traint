@@ -22,6 +22,7 @@ from django.conf.urls.static import static # for images
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('accounts/', include('accounts.urls')), 
     path('accounts/', include('django.contrib.auth.urls')),
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     url(r'^ratings/', include(('ratings.urls', 'ratings'), namespace='ratings')),
