@@ -9,13 +9,13 @@
         <h2 style="color: #24282e"> {{ dress.name }}</h2>   
         <img src="{{ dress.image.url }}">
         <h3>Price: ${{ dress.price }}</h3>
-        <h5>{{ dress.review_set.count }} ratings ({{ dress.average_rating | floatformat }} average rating)</h5>
+        <h5>{{ dress.rating_set.count }} ratings ({{ dress.average_rating | floatformat }} average rating)</h5>
     </div>
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {% if user.is_authenticated %}
     <div class="container">
-        <form method="post" class="form">
+        <form action="{% url 'ratings:add_rating' dress.id %}" method="post" class="form">
             {% csrf_token %} <!-- security concern - preventd CSRF attack-->
             {{ form|crispy }} <!-- formas contents split between paragraphs because of this-->
             {% buttons %}
